@@ -77,5 +77,3 @@ if __name__ == "__main__":
     t_scheduler = sched.scheduler(time.time, time.sleep)
     t_scheduler.enter(60, 1, loop, (t_scheduler, db_name,))
     t_scheduler.run()
-
-    #print(get_online_people())
