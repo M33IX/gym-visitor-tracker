@@ -31,7 +31,7 @@ DIGITS_PATTERN = re.compile(r'\d+')
 def get_online_people() -> int:
     r = requests.post(URL, headers=REQUEST_HEADERS, data=REQUEST_BODY)
     if "Error" in r.json(): return -1
-    page_data: str = r.json().get('SLIDER').get('ALL_BLOCK')
+    page_data: str = r.json().get('SLIDER').get('ALL_BLOCK')#52?!?!?!?!?!
     soup = Soup(page_data, 'html5lib')
     online_people_text: str = soup.findAll('div', {"class": "online-people_rz"})[0].get_text()
     try:
@@ -44,11 +44,11 @@ def create_db(name: str) -> None:
     connection = sqlite3.connect(name)
     cursor = connection.cursor()
     cursor.execute("""
-CREATE TABLE IF NOT EXISTS test (
-time TEXT NOT NULL,
-online INTEGER
-)
-""")
+        CREATE TABLE IF NOT EXISTS test (
+        time TEXT NOT NULL,
+        online INTEGER
+        )
+    """)
     connection.commit()
     connection.close()
 
